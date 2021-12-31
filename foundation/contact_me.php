@@ -1,7 +1,7 @@
 <?php
 if($_POST)
 {
-    $to_Email       = "pixfort.com@gmail.com"; //Replace with recipient email address
+    $to_Email       = "info@ghsunday,school"; //Replace with recipient email address
     $subject        = 'An email from Foundation contact form'; //Subject line for emails
     
     
