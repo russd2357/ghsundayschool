@@ -43,9 +43,11 @@ jQuery(document).ready(function($){
             var post_data;
             var output;
             post_data = {'userName':user_name, 'userEmail':user_email, 'userPhone':user_phone, 'userMessage':user_message};
+            const json_data = JSON.stringify(post_data);
+            
             //Ajax post data to server
             // $.post('contact_me.php', post_data, function(response){
-            $.post('http://localhost:7071/api/HttpTrigger1', post_data, function(response){  
+            $.post('http://localhost:7071/api/HttpTrigger1', json_data, function(response){  
                 //load json data from server and output message     
                 if(response.type == 'error')
                 {
