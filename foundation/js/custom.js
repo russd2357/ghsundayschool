@@ -46,23 +46,29 @@ jQuery(document).ready(function($){
             const json_data = JSON.stringify(post_data);
             
             //Ajax post data to server
-            // $.post('contact_me.php', post_data, function(response){
-            //$.post('http://localhost:7071/api/HttpTrigger1', json_data, function(response){
-            $.post('https://ghss-mailfunc.azurewebsites.net/api/HttpTrigger1', json_data, function(response){
+            fetch('https://ghss-mailfunc.azurewebsites.net/api/HttpTrigger1', {
+                method: 'POST',
+                body: json_data,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-functions-key': 'HUiotf810YAHMLjcB82tnSeqrf-EFsLMZRjj8w_y-TFJAzFunnoy5A==',
+                    'Accept': 'application/json'
+                }
+            }).then((response) => {
                 //load json data from server and output message     
                 if(response.type == 'error')
                 {
                     output = '<div class="error">'+response.text+'</div>';
                 }else{
                     output = '<div class="success">'+response.text+'</div>';
-                    
+ 
                     //reset values in all input fields
                     $('#contact_form input').val(''); 
                     $('#contact_form textarea').val(''); 
                 }
-                
-                $("#result").hide().html(output).slideDown();
-            }, 'json');
+                 
+                $("#result").hide().docker.html(output).slideDown();
+            });
             
         }
 
